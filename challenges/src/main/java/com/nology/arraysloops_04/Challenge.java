@@ -1,5 +1,7 @@
 package com.nology.arraysloops_04;
 
+import java.util.stream.IntStream;
+
 /**
  *   All challenges in this repository are separated into three levels: Foundation, Intermediate, and Advanced.
  *   The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
@@ -13,16 +15,23 @@ public class Challenge {
     // -------------- FOUNDATION --------------
 
     /***
-     * Get the first and last items in an given string array.
+     * Get the first and last items in a given string array.
      *
-     * If a the given array's length is 0 return an empty string array.
+     * If the given array's length is 0 return an empty string array.
      *
      * @param namesArr e.g. ["Ollie", "Sam", "Bex"]
      * @return a new array containing the first and last items in the given array e.g. ["Ollie", "Bex"]
      */
     public String[] getFirstAndLast(String[] namesArr) {
-        return new String[0];
-    }
+        int lastIndex = namesArr.length - 1;
+        if (namesArr.length == 0) {
+            return namesArr;
+        } else {
+            String[] newArr = {namesArr[0], namesArr[lastIndex]};
+            return newArr;
+        }
+        }
+
 
     /***
      * Find the SUM/Total of an array of peoples ages.
@@ -31,7 +40,12 @@ public class Challenge {
      * @return an amount e.g. 104
      */
     public int totalAges(int[] agesArr) {
-        return -1;
+        int i = 0;
+        int sum = 0;
+        for (i = 0; i < agesArr.length; i++) {
+            sum += agesArr[i];
+        }
+        return sum;
     }
 
     /***
@@ -41,7 +55,13 @@ public class Challenge {
      * @return Amount of odd numbers e.g. 3
      */
     public int getAmountOfOddNumbers(int[] numbersArr) {
-        return -1;
+        int sum = 0;
+        for (int number : numbersArr) {
+            if (number %2 == 1) {
+                ++sum;
+            }
+        }
+        return sum;
     }
 
     // -------------- INTERMEDIATE --------------
@@ -57,7 +77,11 @@ public class Challenge {
      * @return a new array of all numbers between and including the min and max number. e.g. [3, 4, 5, 6]
      */
     public int[] getRange(int min, int max) {
-        return new int[] {};
+        if (max > min) {
+      return IntStream.rangeClosed(min, max).toArray();
+        } else {
+            return new int[] {};
+        }
     }
 
     /**
@@ -66,7 +90,14 @@ public class Challenge {
      * @return a string with the last name, followed by the first name e.g. "Evans Andy"
      */
     public String swapNames(String fullName) {
-        return "";
+        String words[]=fullName.split("\\s");
+        String reverseWord="";
+        for(String w:words){
+            StringBuilder sb=new StringBuilder(w);
+            sb.reverse();
+            reverseWord+=sb.toString()+" ";
+        }
+        return reverseWord.trim();
     }
 
     /***

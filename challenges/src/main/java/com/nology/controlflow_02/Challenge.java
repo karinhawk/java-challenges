@@ -20,7 +20,8 @@ public class Challenge {
      * @return returns a string which is the concatenation of the 2 parameters
      */
     public String getFullName(String firstName, String lastName) {
-        return "";
+
+        return firstName + " " + lastName;
     }
 
     /***
@@ -31,7 +32,9 @@ public class Challenge {
      * @return returns a boolean based on whether the number is between 0 and the range limit
      */
     public boolean isWithinRange(int number, int rangeLimit) {
-        return false;
+        if (number == rangeLimit) {
+            return true;
+        } else return number >= 0 && number <= rangeLimit;
     }
 
 
@@ -50,7 +53,19 @@ public class Challenge {
      * @return returns the result of the equation
      */
     public int stringCalculator(int numberOne, int numberTwo, String operator) {
-        return -1;
+        if (numberOne < 0 || numberTwo <0){
+            return -1;
+        } else if (operator == "*") {
+            return numberOne * numberTwo;
+        } else if (operator == "/") {
+            return numberOne / numberTwo;
+        } else if (operator == "+") {
+            return numberOne + numberTwo;
+        } else if (operator == "-") {
+            return numberOne - numberTwo;
+        } else {
+            return -1;
+        }
     }
 
 
